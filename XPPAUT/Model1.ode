@@ -1,0 +1,14 @@
+
+par gammaG=0.2 kappaC=0.35 cT=0.01 mMax=25 gammaM=0.05 
+
+init u1=1 u2=0.1 u3=0
+
+dU1/dt=(U2+cT)*U1*(1-U1/mMax)-gammaM*U1
+dU2/dt=kappaC*U1-U2*U3-U2
+dU3/dt=U1-gammaG*U3
+
+@ xlo=0, xhi=1000, ylo=0, yhi=30,
+@ bounds=1000000
+@ DT=0.01 Time step for integrator
+
+@ YP=U1, NOUT=1, TOTAL=1000, MAXSTOR=200000, BELL=0, AUTOVAR=U1

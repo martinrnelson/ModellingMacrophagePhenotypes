@@ -1,0 +1,17 @@
+
+par gammaM=0.05 betaA=1 phi=0.1 nu=0.1 mMax=25 alpha1=1 alpha2=0.01 kappaC=0.35 gammaG=0.2 cT=0.01 gammaA=1 kappaA=2 phi2=0.01
+
+init u1=1 u2=0 u3=0.25 u4=0 u5=0 u6=0
+
+dU1/dt=(U3+cT)*(U2+U1)*(1-(U2+U1)/mMax)-alpha1*U3*U1+alpha2*U4*U2-gammaM*U1
+dU2/dt=alpha1*U3*U1-alpha2*U4*U2-gammaM*U2
+dU3/dt=kappaC*U2+kappaA*gammaA*U6^2/(betaA^2+U6^2)-U3*U4-U3
+dU4/dt=U1-gammaG*U4
+dU5/dt=U3-nu*U5
+dU6/dt=nu*U5-phi*(U1+phi2*U2)*U6-gammaA*U6
+
+@ xlo=0, xhi=1000, ylo=0, yhi=2,
+@ bounds=1000000
+@ DT=0.01 Time step for integrator
+
+@ YP=U1, NOUT=1, TOTAL=1000, MAXSTOR=200000, BELL=0, AUTOVAR=U1
